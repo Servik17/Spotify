@@ -1,12 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class ArtistsList extends React.Component {
     render() {
-        const list = this.props.artists.map(artist => <a href={`${artist.id}/albums`} key={artist.id}><li >{ artist.name }</li></a>);
+        let artists = this.props.artists;
+
+        const artistsList = artists.map(artist => 
+            <li key={artist.id}>
+                <Link to={`${artist.id}/albums`}>
+                    { artist.name }
+                </Link>
+            </li>
+        );
 
         return (
             <ul>
-                { list }
+                { artistsList }
             </ul>
         );
     }

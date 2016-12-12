@@ -30,20 +30,29 @@ export default class Artists extends React.Component {
               q: query
             }
         }).then((response) => {
-            this.setState({                
-                artistsList: response.data.artists.items
-            })
+            if (response.data.artists.items.length === 0) {
+                this.setState({
+                    artistsList: undefined,
+                    err: 'Ничего не найдено'
+                });
+            } else {
+                this.setState({                
+                    artistsList: response.data.artists.items,
+                    err: undefined
+                });
+            }
         }, (err) => {
-            this.setState({
-                err: 'Неверный запрос, '
-            })
-
+            if (err.status === 400) {
+                this.setState({
+                    artistsList: undefined,
+                    err: 'Неверный запрос'
+                })
+            }
         });
         event.preventDefault();
     };
     
     render() {
-        // const artists = this.state.err ? <div>{this.state.err}</div> : <ArtistsList artists={this.state.artistsList} />;
         let artists = <div></div>;
         
         if (this.state.err) {
