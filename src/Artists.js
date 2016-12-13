@@ -8,12 +8,22 @@ export default class Artists extends React.Component {
         
         this.state = {
             search: '',
-            artistsList: undefined,
+            artistsList: this.getArtists(),
             err: undefined
         };
         
+        this.getArtists = this.getArtists.bind(this);
         this.submited = this.submited.bind(this);
         this.changed = this.changed.bind(this);
+    }
+    
+    getArtists() {
+        if (sessionStorage.getItem('artists')) {
+            let artists = JSON.parse(sessionStorage.getItem('artists'));
+            return artists;
+        } else {
+            return undefined;
+        }
     }
     
     changed(event) {
@@ -43,6 +53,9 @@ export default class Artists extends React.Component {
                         err: 'Ничего не найдено'
                     });
                 } else {
+                    const artists = JSON.stringify(response.data.artists.items);
+                    sessionStorage.setItem('artists', artists);
+                    
                     this.setState({                
                         artistsList: response.data.artists.items,
                         err: undefined
@@ -53,12 +66,12 @@ export default class Artists extends React.Component {
                     this.setState({
                         artistsList: undefined,
                         err: 'Неверный запрос'
-                    })
+                    });
                 }
             });
         }
         event.preventDefault();
-    };
+    }
     
     render() {
         let artists = <div></div>;
