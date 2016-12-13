@@ -30,8 +30,9 @@ export default class Albums extends React.Component {
                 <div>
                     {images}
                 </div>
+                <hr />
                 <div>
-                    <Link to="/"><button className="btn btn-default">Назад</button></Link>
+                    <Link to="/"><button className="btn btn-default"><span className="glyphicon glyphicon-menu-left"></span> Назад</button></Link>
                 </div>
             </div>
         );

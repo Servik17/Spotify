@@ -89,7 +89,7 @@ export default class Artists extends React.Component {
                         <label htmlFor="search">Найти:</label>
                         <input className="form-control" id="search" placeholder="Артист" onChange={this.changed}></input>
                     </div>
-                    <button type="submit" className="btn btn-default">{`Искать ${this.state.search}`}</button>
+                    <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> {`Искать ${this.state.search}`}</button>
                 </form>
                 { artists }
             </div>
