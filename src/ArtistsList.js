@@ -6,17 +6,15 @@ export default class ArtistsList extends React.Component {
         let artists = this.props.artists;
 
         const artistsList = artists.map(artist => 
-            <li key={artist.id}>
-                <Link to={`${artist.id}/albums`}>
-                    { artist.name }
-                </Link>
-            </li>
+            <Link className="list-group-item" key={artist.id} to={`${artist.id}/albums`}>
+                { artist.name }
+            </Link>
         );
 
         return (
-            <ul>
+            <div className="list-group">
                 { artistsList }
-            </ul>
+            </div>
         );
     }
 }

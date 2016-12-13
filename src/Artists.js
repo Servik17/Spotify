@@ -64,25 +64,19 @@ export default class Artists extends React.Component {
         let artists = <div></div>;
         
         if (this.state.err) {
-            artists = <div className="error">{this.state.err}</div>;
+            artists = <div className="alert alert-danger"><strong>{this.state.err}</strong></div>;
         } else if (this.state.artistsList) {
             artists = <ArtistsList artists={this.state.artistsList}/>;
         }
 
         return (
-            <div>
-                <form onSubmit={this.submited} className="form-horizontal">
+            <div className="col-sm-offset-2 col-sm-8">
+                <form onSubmit={this.submited} >
                     <div className="form-group">
-                        <label htmlFor="search" className="col-sm-2 control-label">Найти</label>
-                        <div className="col-sm-10">
-                            <input className="form-control" id="search" placeholder="Артист" onChange={this.changed}></input>
-                        </div>
+                        <label htmlFor="search">Найти:</label>
+                        <input className="form-control" id="search" placeholder="Артист" onChange={this.changed}></input>
                     </div>
-                    <div className="form-group">
-                        <div className="col-sm-offset-2 col-sm-10">
-                            <button type="submit" className="btn btn-default">{`Искать ${this.state.search}`}</button>
-                        </div>
-                    </div>
+                    <button type="submit" className="btn btn-default">{`Искать ${this.state.search}`}</button>
                 </form>
                 { artists }
             </div>

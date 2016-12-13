@@ -21,14 +21,18 @@ export default class Albums extends React.Component {
 
     render() {
         const images = this.state.images.map((img, ind) => {
-            return <img src={img.url} key={ind} width="150" height="150" role="presentation" />;
+            return <img src={img.url} key={ind} width="150" height="150" role="presentation" className="img-rounded"/>;
         });
         
         return (
             <div id="images">
                 <h1>Альбомы { this.state.artist }</h1>
-                {images}
-                <Link to="/"><button>Назад</button></Link>
+                <div>
+                    {images}
+                </div>
+                <div>
+                    <Link to="/"><button className="btn btn-default">Назад</button></Link>
+                </div>
             </div>
         );
     }
