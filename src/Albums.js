@@ -11,7 +11,7 @@ export default class Albums extends React.Component {
                 this.setState({
                     images: response.data.items.map(album => album.images[1]),
                     artist: response.data.items[0].artists[0].name
-                })
+                });
             });
         this.state = {
             images: [],

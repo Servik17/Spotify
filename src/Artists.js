@@ -61,11 +61,21 @@ export default class Artists extends React.Component {
                         err: undefined
                     });
                 }
-            }, (err) => {
-                if (err.status === 400) {
+            }).catch((err) => {
+                if (err.status >= 500) {
+                    this.setState({
+                        artistsList: undefined,
+                        err: 'Ошибка сервера'
+                    });
+                } else if (err.status === 400) {
                     this.setState({
                         artistsList: undefined,
                         err: 'Неверный запрос'
+                    });
+                } else {
+                    this.setState({
+                        artistsList: undefined,
+                        err: err.message
                     });
                 }
             });
@@ -84,7 +94,7 @@ export default class Artists extends React.Component {
 
         return (
             <div className="col-sm-offset-2 col-sm-8">
-                <form onSubmit={this.submited} >
+                <form className="form-inline" onSubmit={this.submited} >
                     <div className="form-group">
                         <label htmlFor="search">Найти:</label>
                         <input className="form-control" id="search" placeholder="Артист" onChange={this.changed}></input>
