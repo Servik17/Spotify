@@ -49,7 +49,8 @@ export default class Artists extends React.Component {
             axios.get(url, {
                 params: {                   //Параметры запроса
                     type: 'artist',
-                    q: query
+                    q: query,
+                    limit: 50
                 }
             }).then(response => {           //Ответ на запрос и запись данных в состояние
                 let items = response.data.artists.items;

@@ -1,5 +1,6 @@
 # Spotify
 
-1. Clone repository && cd Spotify/
-2. npm install
-3. run npm start
+1. Clone repository 
+2. cd Spotify
+3. npm install
+4. npm start
