@@ -102,7 +102,7 @@ export default class Artists extends React.Component {
                         <strong>{ state.err }</strong>
                       </div>;
         //Если в состоянии присутствует artistsList будем отображать список
-        //передаем в него artistsList
+        //передаем в компонент artistsList
         } else if (state.artistsList) {  
             artists = <ArtistsList artists={ state.artistsList }/>;
         }
@@ -117,11 +117,14 @@ export default class Artists extends React.Component {
                 <form className="form-inline" onSubmit={ this.submited } >
                     <div className="form-group">
                         <label htmlFor="search">Найти:</label>
-                        <input className="form-control" id="search" placeholder="Артист" onChange={ this.changed }></input>
+                        <input className="form-control" 
+                               id="search" 
+                               placeholder="Исполнитель" 
+                               onChange={ this.changed }>
+                        </input>
                     </div>
                     <button type="submit" className="btn btn-default">
-                        <span className="glyphicon glyphicon-search"></span> 
-                        {`Искать ${ this.state.search }`}
+                        <span className="glyphicon glyphicon-search"></span> {`Искать ${ this.state.search }`}
                     </button>
                 </form>
                 

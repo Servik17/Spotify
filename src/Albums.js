@@ -41,9 +41,9 @@ export default class Albums extends React.Component {
 
     render() {
         //Подготовка массива картинок для отображения
-        const images = this.state.images.map((img, ind) => {
+        const images = this.state.images.map((img, index) => {
             return <img src={ img.url } 
-                        key={ ind } 
+                        key={ index } 
                         width="150" 
                         height="150" 
                         role="presentation" 
@@ -56,7 +56,7 @@ export default class Albums extends React.Component {
                     Альбомы { this.state.artist }
                 </h1>
                 <div>
-                    {images}
+                    { images }
                 </div>
                 <hr />
                 <div>

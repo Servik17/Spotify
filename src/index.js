@@ -4,7 +4,7 @@ import Artists from './Artists';
 import Albums from './Albums';
 import { Router, Route, browserHistory } from 'react-router';
 
-//Рендер компонентови роутинг
+//Рендер компонентов и роутинг
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={Artists}></Route>
